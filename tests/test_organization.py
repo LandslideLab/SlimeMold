@@ -2,8 +2,8 @@
 
 import pytest
 
-from slime_mold.organization import Organization, TopologyError
-from slime_mold.roles import Member, OrgRole, describe_topology, iter_roles
+from slimemold.organization import Organization, TopologyError
+from slimemold.roles import Member, OrgRole, describe_topology, iter_roles
 
 
 def make_roles():

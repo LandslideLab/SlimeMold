@@ -2,11 +2,11 @@
 
 import pytest
 
-from slime_mold import stats
+from slimemold import stats
 
 
 def test_metrics_categories_present(built_hierarchy):
-    from slime_mold.simulation import SimulationRunner
+    from slimemold.simulation import SimulationRunner
 
     r = SimulationRunner(built_hierarchy.org, built_hierarchy.institution,
                          built_hierarchy.taskflow, built_hierarchy.turnover,
@@ -19,7 +19,7 @@ def test_metrics_categories_present(built_hierarchy):
 
 
 def test_learning_curve_shapes(built_flat):
-    from slime_mold.simulation import SimulationRunner
+    from slimemold.simulation import SimulationRunner
 
     r = SimulationRunner(built_flat.org, built_flat.institution,
                          built_flat.taskflow, built_flat.turnover,
@@ -39,8 +39,8 @@ def test_resilience_with_turnover():
         "turnover": {"schedule": {30: ["a1"]}},
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slime_mold.dsl import build_spec
-    from slime_mold.simulation import SimulationRunner
+    from slimemold.dsl import build_spec
+    from slimemold.simulation import SimulationRunner
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -60,8 +60,8 @@ def test_resilience_no_events():
         },
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slime_mold.dsl import build_spec
-    from slime_mold.simulation import SimulationRunner
+    from slimemold.dsl import build_spec
+    from slimemold.simulation import SimulationRunner
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -71,7 +71,7 @@ def test_resilience_no_events():
 
 
 def test_metric_value_extraction():
-    from slime_mold.experiments import metric_value
+    from slimemold.experiments import metric_value
 
     m = {"performance": {"throughput": 12.5},
          "coordination": {"escalations": 3}}

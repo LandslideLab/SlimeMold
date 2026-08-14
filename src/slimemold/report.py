@@ -141,7 +141,7 @@ def reproduction_bundle(spec: dict, seed: int, out_dir: str,
         fh.write(report.render())
     meta = report.to_dict()
     meta["reproduce"] = (
-        "python -m slime_mold.reproduce --bundle-dir . --seed "
+        "python -m slimemold.reproduce --bundle-dir . --seed "
         f"{seed} --turns {spec.get('sim', {}).get('turns', 100)}"
     )
     with open(os.path.join(out_dir, "metadata.json"), "w", encoding="utf-8") as fh:
@@ -198,8 +198,8 @@ import argparse
 import json
 import os
 
-from slime_mold.dsl import build_spec
-from slime_mold.simulation import SimulationRunner
+from slimemold.dsl import build_spec
+from slimemold.simulation import SimulationRunner
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 

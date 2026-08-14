@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from slime_mold import stats
+from slimemold import stats
 
 # ------------------------------------------------------------- stats depth
 
@@ -55,7 +55,7 @@ def test_mean_and_sd_empty():
 
 
 def test_report_uses_tempdir_when_no_outdir():
-    from slime_mold.experiments import report
+    from slimemold.experiments import report
 
     path = report({"organization": {"roles": [{"id": "a"}],
                                     "reporting": {"a": None}}},
@@ -65,8 +65,8 @@ def test_report_uses_tempdir_when_no_outdir():
 
 
 def test_scan_reps_averaging():
-    from slime_mold.demo import hierarchy_spec
-    from slime_mold.experiments import scan
+    from slimemold.demo import hierarchy_spec
+    from slimemold.experiments import scan
 
     res = scan(hierarchy_spec(3), "institution.supervision_budget.lead",
                [0], metric="throughput", turns=10, reps=3)
@@ -75,8 +75,8 @@ def test_scan_reps_averaging():
 
 
 def test_compare_t_test_option():
-    from slime_mold.demo import flat_spec, hierarchy_spec
-    from slime_mold.experiments import compare
+    from slimemold.demo import flat_spec, hierarchy_spec
+    from slimemold.experiments import compare
 
     res = compare(hierarchy_spec(3), flat_spec(), metric="success_rate",
                   reps=2, test="t", turns=15)
@@ -84,7 +84,7 @@ def test_compare_t_test_option():
 
 
 def test_metric_value_top_level_number():
-    from slime_mold.experiments import metric_value
+    from slimemold.experiments import metric_value
 
     assert metric_value({"n_completed": 5}, "n_completed") == 5.0
     assert metric_value({"n_completed": 5}, "n_completed") == 5.0
@@ -96,7 +96,7 @@ def test_metric_value_top_level_number():
 def test_protocol_serve_short_lived(tmp_path):
     import threading
 
-    from slime_mold.server import make_server
+    from slimemold.server import make_server
 
     srv = make_server("127.0.0.1", 0)
     port = srv.server_address[1]
@@ -144,7 +144,7 @@ def test_protocol_serve_short_lived(tmp_path):
 
 
 def test_protocol_cli_bad_spec(tmp_path):
-    from slime_mold.protocol import main
+    from slimemold.protocol import main
 
     rc = main(["run", "--spec", "nonexistent.yaml", "--out", "x.json"])
     assert rc == 1
@@ -157,7 +157,7 @@ def test_protocol_cli_serve_returns_running(tmp_path):
     import time
 
     proc = subprocess.Popen(
-        [sys.executable, "-m", "slime_mold", "serve", "--host", "127.0.0.1",
+        [sys.executable, "-m", "slimemold", "serve", "--host", "127.0.0.1",
          "--port", "0"],
         env={"PYTHONPATH": "src"}, stdout=subprocess.PIPE,
         stderr=subprocess.PIPE, cwd=str(tmp_path.parent.parent),
@@ -172,7 +172,7 @@ def test_protocol_cli_serve_returns_running(tmp_path):
 
 
 def test_load_spec_json(tmp_path):
-    from slime_mold.protocol import load_spec
+    from slimemold.protocol import load_spec
 
     p = tmp_path / "spec.json"
     p.write_text(json.dumps({"organization": {"roles": [
@@ -182,7 +182,7 @@ def test_load_spec_json(tmp_path):
 
 
 def test_parse_values_cli():
-    from slime_mold.protocol import _parse_values
+    from slimemold.protocol import _parse_values
 
     assert _parse_values("0,3,5") == [0, 3, 5]
     assert _parse_values("[0.5, 1.0]") == [0.5, 1.0]

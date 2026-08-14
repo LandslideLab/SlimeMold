@@ -2,7 +2,7 @@
 
 import pytest
 
-from slime_mold.dsl import build_spec
+from slimemold.dsl import build_spec
 
 
 @pytest.fixture

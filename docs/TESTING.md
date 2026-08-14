@@ -15,7 +15,7 @@ Command:
 
 ```bash
 ruff check src tests
-PYTHONPATH=src python3 -m pytest --cov=slime_mold --cov-report=term
+PYTHONPATH=src python3 -m pytest --cov=slimemold --cov-report=term
 ```
 
 | Check | Result | Detail |

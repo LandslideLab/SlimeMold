@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "slime-mold"
+name = "slimemold"
 version = "0.1.0"
 description = "Deterministic agent-based testbed for human + AI organization design (topology, institutions, knowledge, turnover)."
 readme = "README.md"
@@ -33,9 +33,9 @@ classifiers = [
 # (CI, notebooks, Pyodide web workers).
 
 [project.urls]
-Homepage = "https://github.com/LandslideLab/slime-mold"
-Repository = "https://github.com/LandslideLab/slime-mold"
-Documentation = "https://github.com/LandslideLab/slime-mold#readme"
+Homepage = "https://github.com/LandslideLab/SlimeMold"
+Repository = "https://github.com/LandslideLab/SlimeMold"
+Documentation = "https://github.com/LandslideLab/SlimeMold#readme"
 
 [project.optional-dependencies]
 # Optional ecosystem integrations (kept out of the core so the core stays
@@ -46,20 +46,20 @@ yaml = ["PyYAML>=6.0"]
 dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
 
 [project.scripts]
-slime-mold = "slime_mold.protocol:main"
+slimemold = "slimemold.protocol:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"slime_mold" = ["py.typed"]
+"slimemold" = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q --cov=slime_mold --cov-report=term-missing --cov-fail-under=90"
+addopts = "-q --cov=slimemold --cov-report=term-missing --cov-fail-under=90"
 
 [tool.coverage.run]
-source = ["slime_mold"]
+source = ["slimemold"]
 branch = true
 
 [tool.coverage.report]

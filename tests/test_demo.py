@@ -1,8 +1,8 @@
 """Tests for the customer-service demo."""
 
 
-from slime_mold import demo
-from slime_mold.dsl import build_spec
+from slimemold import demo
+from slimemold.dsl import build_spec
 
 
 def test_demo_specs_build():

@@ -2,7 +2,7 @@
 
 import random
 
-from slime_mold.knowledge import KnowledgeItem, KnowledgeMechanism
+from slimemold.knowledge import KnowledgeItem, KnowledgeMechanism
 
 
 def make_knowledge(**kwargs):

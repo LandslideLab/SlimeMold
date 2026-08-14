@@ -2,14 +2,14 @@
 
 This module is the contract between the Python engine and any client (the web
 testbed, notebooks, CI). Everything the engine produces is JSON-serializable;
-everything a client sends is a plain spec dict (see ``slime_mold.dsl``).
+everything a client sends is a plain spec dict (see ``slimemold.dsl``).
 
 CLI usage::
 
-    python -m slime_mold run --spec spec.yaml --out result.json
-    python -m slime_mold compare --spec-a a.yaml --spec-b b.yaml --metric throughput
-    python -m slime_mold scan --spec spec.yaml --param supervision_budget.mgr --values 0,3,5
-    python -m slime_mold report --spec spec.yaml --out-dir bundle
+    python -m slimemold run --spec spec.yaml --out result.json
+    python -m slimemold compare --spec-a a.yaml --spec-b b.yaml --metric throughput
+    python -m slimemold scan --spec spec.yaml --param supervision_budget.mgr --values 0,3,5
+    python -m slimemold report --spec spec.yaml --out-dir bundle
 """
 
 from __future__ import annotations
@@ -96,7 +96,7 @@ def _is_float(v: str) -> bool:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="slime_mold",
+        prog="slimemold",
         description="SlimeMold: human + AI organization design simulation testbed",
     )
     sub = parser.add_subparsers(dest="command", required=True)
@@ -130,7 +130,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_rep = sub.add_parser("report", help="write ODD report + reproduction bundle")
     p_rep.add_argument("--spec", required=True)
-    p_rep.add_argument("--out-dir", default="slime_mold_bundle")
+    p_rep.add_argument("--out-dir", default="slimemold_bundle")
     p_rep.add_argument("--seed", type=int, default=42)
     p_rep.add_argument("--note", default="")
 

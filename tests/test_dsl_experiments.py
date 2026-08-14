@@ -4,15 +4,15 @@ import json
 
 import pytest
 
-from slime_mold.dsl import SpecError, build_spec, parse_yaml
-from slime_mold.experiments import (
+from slimemold.dsl import SpecError, build_spec, parse_yaml
+from slimemold.experiments import (
     compare,
     report,
     run_spec,
     scan,
     set_param,
 )
-from slime_mold.report import ODDReport, reproduction_bundle
+from slimemold.report import ODDReport, reproduction_bundle
 
 # --------------------------------------------------------------- yamlmini
 
@@ -174,7 +174,7 @@ def test_agents_overrides():
 
 
 def test_compare_basic():
-    from slime_mold.demo import flat_spec, hierarchy_spec
+    from slimemold.demo import flat_spec, hierarchy_spec
 
     res = compare(hierarchy_spec(3), flat_spec(), metric="throughput",
                   reps=3, turns=30)
@@ -186,7 +186,7 @@ def test_compare_basic():
 
 
 def test_compare_bad_metric():
-    from slime_mold.demo import flat_spec, hierarchy_spec
+    from slimemold.demo import flat_spec, hierarchy_spec
 
     with pytest.raises(KeyError):
         compare(hierarchy_spec(3), flat_spec(), metric="nope", reps=1,
@@ -194,7 +194,7 @@ def test_compare_bad_metric():
 
 
 def test_scan_basic():
-    from slime_mold.demo import hierarchy_spec
+    from slimemold.demo import hierarchy_spec
 
     res = scan(hierarchy_spec(3),
                "institution.supervision_budget.lead", [0, 3],
@@ -222,7 +222,7 @@ def test_run_spec_helper():
 
 
 def test_build_runner_returns_seed():
-    from slime_mold.experiments import build_runner
+    from slimemold.experiments import build_runner
 
     spec = {
         "organization": {"roles": [{"id": "a", "capabilities": ["t"]}],

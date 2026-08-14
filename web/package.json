@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:engine": "PYTHONPATH=../src python3 -m slime_mold serve --port 8642",
+    "dev:engine": "PYTHONPATH=../src python3 -m slimemold serve --port 8642",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test": "vitest run",

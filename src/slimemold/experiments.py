@@ -239,6 +239,6 @@ def report(spec: dict, out_dir: str | None = None,
     Returns the bundle directory path.
     """
     if out_dir is None:
-        out_dir = tempfile.mkdtemp(prefix="slime_mold_bundle_")
+        out_dir = tempfile.mkdtemp(prefix="slimemold_bundle_")
     reproduction_bundle(spec, seed, out_dir, note=note)
     return out_dir

@@ -3,13 +3,13 @@
 Design goals (ABM methodology requirements):
 
 * **Determinism** -- a single master seed drives all randomness through
-  :class:`~slime_mold.rng.SeededRandom` child streams. Re-running the same
+  :class:`~slimemold.rng.SeededRandom` child streams. Re-running the same
   config + seed reproduces the same event log bit-for-bit.
 * **Turn-based scheduler** -- every turn executes the same fixed pipeline
   (turnover -> environment -> arrivals -> approvals -> execution -> timeouts ->
   knowledge), so results do not depend on host speed or thread scheduling.
 * **Message bus** -- all interaction is recorded on the
-  :class:`~slime_mold.bus.MessageBus`; the event log is the complete evidence
+  :class:`~slimemold.bus.MessageBus`; the event log is the complete evidence
   base for metrics and replay.
 * **Timeout/deadlock detection** -- approval/consult requests that cannot be
   served (typically because supervision budget is exhausted) wait, escalate up
