@@ -2,7 +2,7 @@
 
 import random
 
-from slimemold.tasks import (
+from aislimemold.tasks import (
     Task,
     TaskFlow,
     TaskState,

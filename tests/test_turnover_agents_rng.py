@@ -4,10 +4,10 @@ import random
 
 import pytest
 
-from slimemold.agents import DummyLLMAdapter, ScriptedPolicy
-from slimemold.rng import SeededRandom, _derive_seed
-from slimemold.roles import Member
-from slimemold.turnover import Turnover
+from aislimemold.agents import DummyLLMAdapter, ScriptedPolicy
+from aislimemold.rng import SeededRandom, _derive_seed
+from aislimemold.roles import Member
+from aislimemold.turnover import Turnover
 
 
 def members():
@@ -156,7 +156,7 @@ def test_dummy_llm_adapter():
 
 
 def test_llm_adapter_invoke_not_implemented():
-    from slimemold.agents import LLMAgentAdapter
+    from aislimemold.agents import LLMAgentAdapter
 
     class Noop(LLMAgentAdapter):
         pass

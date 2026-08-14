@@ -89,13 +89,13 @@ export function ExportPanel({
                   margin: 0,
                 }}
               >
-{`pip install slimemold
+{`pip install aiaislimemold
 
 # single run
-slimemold run --spec spec.yaml --seed ${seed} --out result.json
+aiaislimemold run --spec spec.yaml --seed ${seed} --out result.json
 
 # ODD report + reproduction bundle
-slimemold report --spec spec.yaml --out-dir bundle --seed ${seed}
+aiaislimemold report --spec spec.yaml --out-dir bundle --seed ${seed}
 
 # regenerate from the bundle, anywhere
 cd bundle && python reproduce.py`}

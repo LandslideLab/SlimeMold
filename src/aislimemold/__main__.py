@@ -1,4 +1,4 @@
-"""Module entry point: ``python -m slimemold ...``."""
+"""Module entry point: ``python -m aislimemold ...``."""
 
 import sys
 

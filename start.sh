@@ -11,7 +11,7 @@ cd "$(dirname "$0")"
 
 # Start the engine in the background.
 echo "Starting SlimeMold engine on $ENGINE_HOST:$ENGINE_PORT ..."
-PYTHONPATH=src "$PYTHON_BIN" -m slimemold serve --host "$ENGINE_HOST" --port "$ENGINE_PORT" &
+PYTHONPATH=src "$PYTHON_BIN" -m aiaislimemold serve --host "$ENGINE_HOST" --port "$ENGINE_PORT" &
 ENGINE_PID=$!
 
 cleanup() {

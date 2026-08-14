@@ -2,13 +2,13 @@
 
 import pytest
 
-from slimemold.institution import (
+from aislimemold.institution import (
     ApprovalGate,
     DelegationStrategy,
     Institution,
 )
-from slimemold.roles import OrgRole
-from slimemold.tasks import Task
+from aislimemold.roles import OrgRole
+from aislimemold.tasks import Task
 
 
 def make_task(**kwargs):

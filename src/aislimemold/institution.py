@@ -16,7 +16,7 @@ reporting topology. It captures three management-theory levers:
   time = coordination cost) and eventually escalates. This is the *span of
   control in time*: managers cannot supervise unboundedly.
 
-Five autonomy levels (see :mod:`slimemold.autonomy`) interact with the
+Five autonomy levels (see :mod:`aislimemold.autonomy`) interact with the
 institution: the autonomy level decides which interactions are *required*; the
 delegation strategy decides whether a manager *grants* them; the budget decides
 whether the manager can *afford* them.

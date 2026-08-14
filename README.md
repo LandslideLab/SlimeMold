@@ -70,21 +70,21 @@ manager can pull.
 ## Quick start
 
 ```bash
-pip install slimemold            # engine only
-pip install "slimemold[dev]"     # + pytest/ruff for development
+pip install aislimemold            # engine only
+pip install "aislimemold[dev]"     # + pytest/ruff for development
 ```
 
 Run the built-in customer-service demo:
 
 ```bash
-slimemold run --spec demos/cs_hierarchy.yaml --out result.json
-python -m slimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
+aislimemold run --spec demos/cs_hierarchy.yaml --out result.json
+python -m aislimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
 ```
 
 HTTP server:
 
 ```bash
-slimemold serve --host 127.0.0.1 --port 8765
+aislimemold serve --host 127.0.0.1 --port 8765
 curl -s http://127.0.0.1:8765/api/health
 curl -s -X POST http://127.0.0.1:8765/api/simulate \
   -H 'Content-Type: application/json' \
@@ -109,9 +109,9 @@ export** (ODD report + spec + result). See `web/README.md`.
 From Python:
 
 ```python
-from slimemold.demo import hierarchy_spec
-from slimemold.simulation import SimulationRunner
-from slimemold.dsl import build_spec
+from aislimemold.demo import hierarchy_spec
+from aislimemold.simulation import SimulationRunner
+from aislimemold.dsl import build_spec
 
 built = build_spec(hierarchy_spec(3))
 runner = SimulationRunner(built.org, built.institution, built.taskflow,
@@ -261,7 +261,7 @@ turnover:
 | `turnover` | `per_turn_probability` | P of a member leaving; replacement enters as `#v{gen+1}` |
 | `sim` | `turns`, `seed` | run length and master seed |
 
-The DSL parser (`slimemold.dsl`) is a dependency-free YAML-subset: nested
+The DSL parser (`aislimemold.dsl`) is a dependency-free YAML-subset: nested
 blocks, lists, bare `-` bullets, inline `{}` / `[]`, and `#` comments. Full YAML
 is available via the optional `yaml` extra.
 
@@ -288,7 +288,7 @@ baseline and reports the drop and recovery turns.
 ### compare — A/B testing
 
 ```bash
-slimemold compare --spec-a demos/cs_hierarchy.yaml --spec-b demos/cs_flat.yaml \
+aislimemold compare --spec-a demos/cs_hierarchy.yaml --spec-b demos/cs_flat.yaml \
   --metric throughput --reps 20 --test auto
 ```
 
@@ -298,7 +298,7 @@ Welch's t with `--test t`) with Cohen's d effect size.
 ### scan — parameter sweep
 
 ```bash
-slimemold scan --spec demos/cs_hierarchy.yaml \
+aislimemold scan --spec demos/cs_hierarchy.yaml \
   --param institution.supervision_budget.lead --values 0,3,5 --metric success_rate
 ```
 
@@ -308,7 +308,7 @@ slimemold scan --spec demos/cs_hierarchy.yaml \
 ### report — ODD + reproduction bundle
 
 ```bash
-slimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
+aislimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
 ```
 
 Writes `ODD.txt` (Overview / Design concepts / Details), `metadata.json`,
@@ -323,7 +323,7 @@ flat team of three across supervision budgets (0% / 50% / 100%), all driven
 from the same seed:
 
 ```bash
-slimemold compare --spec-a demos/cs_hierarchy.yaml --spec-b demos/cs_flat.yaml \
+aislimemold compare --spec-a demos/cs_hierarchy.yaml --spec-b demos/cs_flat.yaml \
   --metric throughput --reps 20
 ```
 
@@ -337,7 +337,7 @@ statistically significant and how large the effect is (Cohen's d).
 To reproduce the ODD-described experiment end to end:
 
 ```bash
-slimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
+aislimemold report --spec demos/cs_hierarchy.yaml --out-dir bundle
 python bundle/reproduce.py --seed 42 --turns 120
 ```
 
@@ -346,7 +346,7 @@ python bundle/reproduce.py --seed 42 --turns 120
 ## Development
 
 ```bash
-pip install "slimemold[dev]"
+pip install "aislimemold[dev]"
 python -m pytest                      # runs with coverage gate >=90%
 ruff check src tests
 ```

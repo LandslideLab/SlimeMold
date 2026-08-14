@@ -5,22 +5,22 @@ import threading
 
 import pytest
 
-from slimemold import __version__
-from slimemold.agents import DummyLLMAdapter
-from slimemold.institution import Institution
-from slimemold.organization import Organization
-from slimemold.roles import OrgRole
-from slimemold.simulation import (
+from aislimemold import __version__
+from aislimemold.agents import DummyLLMAdapter
+from aislimemold.institution import Institution
+from aislimemold.organization import Organization
+from aislimemold.roles import OrgRole
+from aislimemold.simulation import (
     SimConfig,
     SimulationResult,
     SimulationRunner,
 )
-from slimemold.tasks import TaskFlow
-from slimemold.turnover import Turnover
+from aislimemold.tasks import TaskFlow
+from aislimemold.turnover import Turnover
 
 
 def build_runner(spec_dict):
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec_dict)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -73,7 +73,7 @@ def test_supervision_enabled_switch():
                         "supervision_budget": {"mgr": 0}},
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec)
     b.sim.supervision_enabled = False
@@ -92,7 +92,7 @@ def test_no_capable_role_fails_cleanly():
         },
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -110,7 +110,7 @@ def test_llm_policy_integration():
         },
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -136,7 +136,7 @@ def test_deadlock_resolution_detected():
                         "max_wait_turns": 8},
         "taskflow": {"arrival_rate": 2.0, "task_types": ["t1"]},
     }
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -156,7 +156,7 @@ def test_turnover_events_recorded():
         "turnover": {"schedule": {5: ["a1"]}},
         "taskflow": {"arrival_rate": 1.0, "task_types": ["t1"]},
     }
-    from slimemold.dsl import build_spec
+    from aislimemold.dsl import build_spec
 
     b = build_spec(spec)
     r = SimulationRunner(b.org, b.institution, b.taskflow, b.turnover,
@@ -219,8 +219,8 @@ def test_metrics_dict_without_full_result():
 
 
 def test_protocol_run_command(tmp_path):
-    from slimemold.dsl import build_spec
-    from slimemold.protocol import run_command
+    from aislimemold.dsl import build_spec
+    from aislimemold.protocol import run_command
 
     spec = build_spec(
         "demos/cs_flat.yaml"
@@ -232,8 +232,8 @@ def test_protocol_run_command(tmp_path):
 
 
 def test_protocol_compare_scan_commands():
-    from slimemold.demo import flat_spec, hierarchy_spec
-    from slimemold.protocol import compare_command, scan_command
+    from aislimemold.demo import flat_spec, hierarchy_spec
+    from aislimemold.protocol import compare_command, scan_command
 
     c = compare_command(hierarchy_spec(3), flat_spec(), metric="throughput",
                         reps=2)
@@ -244,7 +244,7 @@ def test_protocol_compare_scan_commands():
 
 
 def test_protocol_report_command(tmp_path):
-    from slimemold.protocol import report_command
+    from aislimemold.protocol import report_command
 
     out_dir = str(tmp_path / "bundle")
     res = report_command({"sim": {"turns": 5, "seed": 1},
@@ -262,7 +262,7 @@ def test_protocol_report_command(tmp_path):
 
 
 def test_protocol_cli_run(tmp_path):
-    from slimemold.protocol import main
+    from aislimemold.protocol import main
 
     out = tmp_path / "out.json"
     rc = main(["run", "--spec", "demos/cs_flat.yaml", "--out", str(out),
@@ -273,7 +273,7 @@ def test_protocol_cli_run(tmp_path):
 
 
 def test_protocol_cli_compare(tmp_path):
-    from slimemold.protocol import main
+    from aislimemold.protocol import main
 
     out = tmp_path / "cmp.json"
     rc = main(["compare", "--spec-a", "demos/cs_hierarchy.yaml",
@@ -285,7 +285,7 @@ def test_protocol_cli_compare(tmp_path):
 
 
 def test_protocol_cli_scan(tmp_path):
-    from slimemold.protocol import main
+    from aislimemold.protocol import main
 
     out = tmp_path / "scan.json"
     rc = main(["scan", "--spec", "demos/cs_hierarchy.yaml",
@@ -298,7 +298,7 @@ def test_protocol_cli_scan(tmp_path):
 
 
 def test_protocol_cli_report(tmp_path):
-    from slimemold.protocol import main
+    from aislimemold.protocol import main
 
     out_dir = tmp_path / "bundle2"
     rc = main(["report", "--spec", "demos/cs_hierarchy.yaml",
@@ -308,7 +308,7 @@ def test_protocol_cli_report(tmp_path):
 
 
 def test_server_health_and_simulate():
-    from slimemold.server import make_server
+    from aislimemold.server import make_server
 
     srv = make_server("127.0.0.1", 0)
     port = srv.server_address[1]
@@ -372,7 +372,7 @@ def test_server_health_and_simulate():
 
 
 def test_server_scan_and_report_endpoints():
-    from slimemold.server import make_server
+    from aislimemold.server import make_server
 
     srv = make_server("127.0.0.1", 0)
     port = srv.server_address[1]

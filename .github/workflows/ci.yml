@@ -32,8 +32,8 @@ jobs:
 
       - name: Verify CLI
         run: |
-          slimemold run --spec demos/cs_hierarchy.yaml --out /tmp/result.json
-          slimemold report --spec demos/cs_hierarchy.yaml --out-dir /tmp/bundle
+          aiaislimemold run --spec demos/cs_hierarchy.yaml --out /tmp/result.json
+          aiaislimemold report --spec demos/cs_hierarchy.yaml --out-dir /tmp/bundle
           ls /tmp/bundle
 
   web-testbed:

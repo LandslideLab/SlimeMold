@@ -1,8 +1,8 @@
 """Tests for the five-level autonomy model."""
 
 
-from slimemold import autonomy
-from slimemold.autonomy import (
+from aislimemold import autonomy
+from aislimemold.autonomy import (
     AutonomyLevel,
     can_execute,
     requires_approval,
