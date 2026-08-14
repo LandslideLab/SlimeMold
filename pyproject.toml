@@ -26,7 +26,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Sociology :: Social Sciences",
+    "Topic :: Sociology",
 ]
 # The engine is intentionally dependency-free: no runtime requirements.
 # This keeps simulations fully reproducible and lets the engine run anywhere
