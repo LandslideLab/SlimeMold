@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slime-mold"
+version = "0.1.0"
+description = "Deterministic agent-based testbed for human + AI organization design (topology, institutions, knowledge, turnover)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = [
+    "agent-based-modeling",
+    "organization-design",
+    "organizational-simulation",
+    "management-theory",
+    "coordination",
+    "simulation",
+    "abm",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Sociology :: Social Sciences",
+]
+# The engine is intentionally dependency-free: no runtime requirements.
+# This keeps simulations fully reproducible and lets the engine run anywhere
+# (CI, notebooks, Pyodide web workers).
+
+[project.urls]
+Homepage = "https://github.com/LandslideLab/slime-mold"
+Repository = "https://github.com/LandslideLab/slime-mold"
+Documentation = "https://github.com/LandslideLab/slime-mold#readme"
+
+[project.optional-dependencies]
+# Optional ecosystem integrations (kept out of the core so the core stays
+# deterministic and dependency-free).
+mesa = ["mesa>=2.3"]
+salib = ["SALib>=1.5"]
+yaml = ["PyYAML>=6.0"]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
+
+[project.scripts]
+slime-mold = "slime_mold.protocol:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"slime_mold" = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --cov=slime_mold --cov-report=term-missing --cov-fail-under=90"
+
+[tool.coverage.run]
+source = ["slime_mold"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "def __repr__",
+]

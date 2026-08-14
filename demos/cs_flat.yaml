@@ -1,0 +1,56 @@
+# SlimeMold DSL spec
+name: customer-service-flat
+sim:
+  turns: 120
+  seed: 42
+organization:
+  name: cs-flat
+  roles:
+    -
+      id: agent1
+      name: 'CS Agent 1'
+      capabilities:
+        - t1
+        - t2
+      autonomy: approver
+    -
+      id: agent2
+      name: 'CS Agent 2'
+      capabilities:
+        - t1
+        - t3
+      autonomy: approver
+    -
+      id: agent3
+      name: 'CS Agent 3'
+      capabilities:
+        - t2
+        - t3
+      autonomy: approver
+  reporting:
+    agent1: null
+    agent2: null
+    agent3: null
+institution:
+  delegation_strategy: full
+  supervision_budget: {}
+  approval_gates: []
+  escalation_timeout: 6
+  max_wait_turns: 15
+taskflow:
+  arrival_rate: 1.4
+  task_types:
+    - t1
+    - t2
+    - t3
+  complexity_mu: 0.45
+  risk_mu: 0.35
+  dynamism: 0.01
+  anomaly_probability: 0.03
+  novelty_probability: 0.05
+knowledge:
+  sharing_probability: 0.7
+  half_life: 50.0
+  revalidation_probability: 0.12
+turnover:
+  per_turn_probability: 0.002
