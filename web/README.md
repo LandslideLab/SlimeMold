@@ -9,7 +9,7 @@ metrics dashboard, compare / scan experiments and reproduction-package export.
 
 ```
 browser  ──/api──▶  Vite dev server  ──proxy──▶  Python engine (:8642)
-  (React)           (this package)                aiaislimemold.server
+  (React)           (this package)                aislimemold.server
 ```
 
 In development the Vite server proxies `/api` to the engine. On Vercel the same

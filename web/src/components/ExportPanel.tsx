@@ -89,13 +89,13 @@ export function ExportPanel({
                   margin: 0,
                 }}
               >
-{`pip install aiaislimemold
+{`pip install aislimemold
 
 # single run
-aiaislimemold run --spec spec.yaml --seed ${seed} --out result.json
+aislimemold run --spec spec.yaml --seed ${seed} --out result.json
 
 # ODD report + reproduction bundle
-aiaislimemold report --spec spec.yaml --out-dir bundle --seed ${seed}
+aislimemold report --spec spec.yaml --out-dir bundle --seed ${seed}
 
 # regenerate from the bundle, anywhere
 cd bundle && python reproduce.py`}

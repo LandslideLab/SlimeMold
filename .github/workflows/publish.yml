@@ -27,5 +27,5 @@ jobs:
 
       - name: Verify install from PyPI
         run: |
-          pip install --index-url https://pypi.org/simple/ aiaislimemold
-          aiaislimemold --help
+          pip install --index-url https://pypi.org/simple/ aislimemold
+          aislimemold --help
