@@ -28,6 +28,9 @@ It is deliberately distinct from AgentSociety-style models by focusing on the
 knowledge crystallization, and turnover resilience — the levers an actual
 manager can pull.
 
+<img width="1536" height="1024" alt="ChatGPT Image Aug 15, 2026, 10_28_43 AM" src="https://github.com/user-attachments/assets/d084b45b-9def-4e4c-93dc-8d424243fbc1" />
+
+
 ---
 
 ## Features
